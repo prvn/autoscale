@@ -1,0 +1,48 @@
+AutoScaling Setup
+-----------------
+
+This script helps to setup a autoscaling cluster without going through
+the pain of figuring out how a API works. The only reason behind 
+writing this script is to make things easier and faster.
+
+This script is built on top of boto API for Python. You need to have 
+Python boto 2.0 version pre installed on your machine to use this script.
+
+This script brings together all peices needed by for setting up auto scaling, like
+auto scaling configurations, load balancer configurations, cloud watch configuration, 
+ec2 instances configuration etc and making this easier. You pass all the configurations
+or parameters to a single script which gets job done sooner.
+
+
+usage: autoscale.py [-h] --access-key <access key> --secret-key <secret key>
+                         --ami-id <ami id> --key-name <key name> --region <region>
+                         --launch-config <launch configuration> --instance-type
+                         <t1.micro | m1.small | m1.large ..> --load-balancer
+                         <load balancer> --min-size <minimum size> --max-size
+                         <maximum size> --trigger <trigger name> --measure
+                         <CPUUtilization> --lb-target <load balancer target path>
+                         --lb-port <load balancer port> --instance-port <instance
+                         port> --app-protocol <load balancer protocol>
+                         --auto-scaling-group <auto scaling group name>
+                         --auto-scaling-policy <auto scaling policy name>
+
+optional arguments:
+-h, --help              show this help message and exit
+--access-key          <access key>                AWS access key
+--secret-key          <secret key>                AWS secret key
+--ami-id              <ami id>                    EC2 AMI ID
+--key-name            <key name>                  EC2 key name
+--region              <region>                    Region to launch instances in
+--launch-config       <launch configuration>      Launch configuration name
+--instance-type       <t1.micro | m1.small ..>    Type of instance
+--load-balancer       <load balancer>             Load balancer name
+--min-size            <minimum size>              Minimum size of auto scale group
+--max-size            <maximum size>              Maximum size of auto scale group
+--trigger             <trigger name>              Trigger name
+--measure             <CPUUtilization>            Measure name to watch for
+--lb-target           <load balancer target path> Load balancer target path to ping
+--lb-port             <load balancer port>        Load balancer port
+--instance-port       <instance port>             Instance port
+--app-protocol        <load balancer protocol>    Load balancer protocol
+--auto-scaling-group  <auto scaling group name>   Name of auto scaling group to create
+--auto-scaling-policy <auto scaling policy name>  Name of auto scaling policy to create
